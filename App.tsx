@@ -22,8 +22,8 @@ function LoadingScreen() {
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'ionicons': require('./assets/fonts/Ionicons.ttf'),
-    'material-community': require('./assets/fonts/MaterialCommunityIcons.ttf'),
+    ...Ionicons.font,
+    ...MaterialCommunityIcons.font,
   });
 
   // Render app even if fonts haven't loaded — icons show as fallback glyphs
