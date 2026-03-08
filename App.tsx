@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ActivityIndicator, View } from 'react-native';
+import { useFonts } from 'expo-font';
 
 import { store, persistor } from './src/app/store';
 import { RootNavigator } from './src/navigation';
@@ -20,6 +21,17 @@ function LoadingScreen() {
 }
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    ...Ionicons.font,
+    ...MaterialCommunityIcons.font,
+  });
+
+  // Render app even if fonts haven't loaded — icons show as fallback glyphs
+  // instead of blocking the entire app on a 404.
+  if (!fontsLoaded) {
+    return <LoadingScreen />;
+  }
+
   return (
     <Provider store={store}>
       <PersistGate loading={<LoadingScreen />} persistor={persistor}>
