@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     "./App.{js,jsx,ts,tsx}",
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -10,8 +11,16 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#10b77f',
-          dark: '#0a8f61',
+          dark: '#0e9f6e',
           light: '#34d399',
+        },
+        surface: {
+          light: '#ffffff',
+          dark: '#1e293b',
+        },
+        background: {
+          light: '#f6f8f7',
+          dark: '#0f172a',
         },
         action: {
           DEFAULT: '#f59e0b',
@@ -22,24 +31,6 @@ module.exports = {
           DEFAULT: '#DC2626',
           dark: '#b91c1c',
           light: '#ef4444',
-        },
-        surface: {
-          light: '#ffffff',
-          dark: '#1a332a',
-        },
-        background: {
-          light: '#f0fdf4',
-          dark: '#10221c',
-        },
-        text: {
-          main: {
-            light: '#0d1b17',
-            dark: '#e0e7e5',
-          },
-          sub: {
-            light: '#4c9a80',
-            dark: '#8abeb0',
-          },
         },
         secondary: '#8B5E3C',
       },

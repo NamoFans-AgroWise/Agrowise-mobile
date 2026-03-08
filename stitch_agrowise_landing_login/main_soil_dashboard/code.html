@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroWise Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "secondary": "#8B5E3C", // Earth Brown
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a332a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d1b17] dark:text-gray-100 pb-20 overflow-x-hidden">
+<!-- Header Section -->
+<header class="sticky top-0 z-30 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 pt-6 pb-2">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of an Indian farmer smiling in a field" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDDvYShHGdbW9ePa4gJ6Tr8d2JCLN-9SnXtoBTMV1aHQ0mhh90QGTSYHfOK4kMJuYjah4gNzLXcyeeNosAqYz9IP4vwAPu2dv41N--aZTTDiTuIraurAJcA2s_ieChWM45ZGFrZVIOj3LUT2rxRHr9wz39DbuZrgmKJbhll7NxDLz0tlazAMTRzEZSBCnvSDQcmpWIFTVhFVkdOgPtSux61zIrIuFall0vrstCv3S4WB5mU1edxJLsUsRKSl7OiavRzEAEGoT9bgQ7A');">
+</div>
+<div>
+<h1 class="text-xl font-bold leading-tight">Namaste, Rajesh</h1>
+<p class="text-xs text-secondary dark:text-[#a0856c] font-medium">Punjab, India</p>
+</div>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full bg-surface-light dark:bg-surface-dark shadow-sm text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<!-- Weather Widget Compact -->
+<div class="flex items-center justify-between bg-surface-light dark:bg-surface-dark p-3 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-gray-800">
+<div class="flex items-center gap-3">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-full text-blue-500">
+<span class="material-symbols-outlined">cloud</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold">32°C</span>
+<span class="text-xs text-gray-500 dark:text-gray-400">Rain in 2 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs font-medium text-secondary dark:text-[#a0856c] bg-[#fdf8f4] dark:bg-[#3d2e24] px-2 py-1 rounded">
+<span>Partly Cloudy</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-4 py-4 space-y-6">
+<!-- Hero: Soil Thirst Gauge -->
+<section class="flex flex-col items-center justify-center">
+<h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">Soil Thirst (Moisture)</h2>
+<div class="relative size-64 flex items-center justify-center">
+<!-- SVG Gauge Background -->
+<svg class="size-full rotate-[135deg]" viewbox="0 0 100 100">
+<!-- Track -->
+<circle class="text-gray-200 dark:text-gray-800" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-dasharray="198" stroke-dashoffset="0" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Progress (approx 45% of the 75% visible arc) -->
+<circle class="text-primary" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-dasharray="198" stroke-dashoffset="108" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<!-- Center Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-center rotate-0">
+<span class="material-symbols-outlined text-primary text-3xl mb-1">water_drop</span>
+<span class="text-5xl font-bold text-[#0d1b17] dark:text-white tracking-tighter">45%</span>
+<div class="mt-2 px-3 py-1 bg-primary/10 rounded-full">
+<span class="text-primary text-sm font-bold">Optimal</span>
+</div>
+</div>
+<!-- Labels -->
+<div class="absolute bottom-6 left-10 text-[10px] font-bold text-secondary dark:text-gray-500">Dry</div>
+<div class="absolute bottom-6 right-10 text-[10px] font-bold text-blue-500">Wet</div>
+</div>
+<p class="text-sm text-center text-gray-500 dark:text-gray-400 max-w-[240px]">
+                Your soil moisture is perfect for the current wheat crop stage.
+            </p>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+<!-- Temperature -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col gap-3">
+<div class="size-8 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-lg">thermostat</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Soil Temp</p>
+<p class="text-xl font-bold mt-0.5">32°C</p>
+</div>
+</div>
+<!-- Humidity -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col gap-3">
+<div class="size-8 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined text-lg">humidity_percentage</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Humidity</p>
+<p class="text-xl font-bold mt-0.5">65%</p>
+</div>
+</div>
+<!-- Battery -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col gap-3 col-span-2 sm:col-span-1">
+<div class="flex justify-between items-start w-full">
+<div class="size-8 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">battery_full</span>
+</div>
+<span class="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">Good</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium">Sensor Battery</p>
+<p class="text-xl font-bold mt-0.5">85%</p>
+</div>
+</div>
+</section>
+<!-- Sticky Alert Panel -->
+<div class="sticky bottom-20 z-20">
+<div class="relative overflow-hidden rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 p-4 shadow-lg">
+<div class="absolute -right-4 -top-4 size-20 rounded-full bg-red-100 dark:bg-red-800/20 opacity-50"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="bg-red-100 dark:bg-red-900/40 p-2 rounded-full text-red-600 dark:text-red-400 shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="text-red-800 dark:text-red-200 font-bold text-sm">High Fungal Risk!</h3>
+<p class="text-red-600 dark:text-red-300 text-xs mt-1 leading-relaxed">Conditions are favorable for rust. Spray fungicide today.</p>
+</div>
+<button class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-2 rounded-lg shrink-0 transition-colors">
+                        Act Now
+                    </button>
+</div>
+</div>
+</div>
+<!-- Recent Activity / Timeline Placeholder -->
+<div class="pb-6">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-base font-bold text-[#0d1b17] dark:text-white">Recent Diagnosis</h3>
+<a class="text-primary text-xs font-bold" href="#">View All</a>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<div class="min-w-[240px] bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-gray-100 dark:border-gray-800 flex gap-3 items-center shadow-sm">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Close up of a green leaf with yellow spots showing disease" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZK8qgMk7BLRZZTmuPCiTsciHQBoXWdbYlok34H8MSG8x2AEli_h21kochHp8hel1HYoeaFhA-QV-EGQecEPYlxAWzhkaP1H4q96NtvcpldyU6ZO7C9WcXQzUVaYQwIxu5tKlU4mLJdQke408j4UUsmdTU7D2GwfOAHbwblgv34TONlB1kIueTa6_MsLRoZVDlafPTLRs7GisSRVFvFeN1_b7-2DKNP4VuIqJeqGxrb8vjuazCNEZ30i_uXRDr_PymVw87I5BLQ1LX');">
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold truncate">Yellow Rust Detected</span>
+<span class="text-xs text-gray-500">2 days ago • Field 1</span>
+</div>
+</div>
+<div class="min-w-[240px] bg-surface-light dark:bg-surface-dark p-3 rounded-lg border border-gray-100 dark:border-gray-800 flex gap-3 items-center shadow-sm">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Healthy green wheat crops in a field" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRyuZ9JNtvzDngAFS52MU2L3MlsW94R8VmMcOwjZRBsF5Dwj1WN9_f0kUp4wzDrNs6ftN1omraMAzJsFNom3IENQ3sSIEgxbx0HtpjIL68E5BqOFlLXMZ-z7kGwanQH2ETE9hcDcp2qudwGlQsvunACW9XSvN-cl1jbSAStAF6yIbh8FUxKUTI9B_YCDDoxs7o7NM_qshdaGUPkGWtkc-PvwiV9bjF676KhoXUJhgYac5nVnTtBaj-dVYCVatiU5OWgNa1mufLqIt5');">
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold truncate">Healthy Growth</span>
+<span class="text-xs text-gray-500">5 days ago • Field 2</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 px-6 py-2 pb-safe-area-inset-bottom">
+<ul class="flex justify-between items-center">
+<li class="flex flex-col items-center gap-1 cursor-pointer">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[28px] fill-1">home</span>
+</div>
+<span class="text-[10px] font-bold text-primary">Home</span>
+</li>
+<li class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">search_check</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Diagnosis</span>
+</li>
+<li class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">groups</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Community</span>
+</li>
+<li class="flex flex-col items-center gap-1 cursor-pointer group">
+<div class="text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[28px]">person</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary">Profile</span>
+</li>
+</ul>
+<!-- Safe area padding for iPhones without home button -->
+<div class="h-5"></div>
+</nav>
+</body></html>

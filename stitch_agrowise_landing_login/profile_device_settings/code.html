@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroWise - Profile &amp; Device Settings</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "primary-dark": "#0a8f61",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a332a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #10b77f;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #10b77f;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex h-full w-full max-w-md mx-auto flex-col pb-8 overflow-x-hidden min-h-screen shadow-xl bg-background-light dark:bg-background-dark">
+<!-- TopAppBar -->
+<header class="flex items-center px-4 py-4 justify-between sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+<button class="text-slate-800 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Settings</h2>
+<div class="size-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- ProfileHeader -->
+<div class="flex flex-col p-4 w-full">
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-4 shadow-sm border border-slate-100 dark:border-slate-800/50">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-20 w-20 shrink-0 border-2 border-primary/20" data-alt="Portrait of an Indian farmer smiling in a field" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTX7O25lbL22k7fKIBibkXR4oxV3LvCFfStqvu6wBQjcGClDF7EZEfuTFizBFrUm45SCI9KjZ44nn0UjqraWcT-WWn2T2dzTi0yA4IyvvyZnoRaeAAKl2vd2yxUWH9Wf5_GbzNcYgJS2Mb_OI6hQbtSk8ItdhEOCAILQtbFKszjg7CpG1tTZtwuxl0rBgK_EMfnq2Q47fAkyHj5DHFcxHYVtJC2wxMq3PVNhRXgEz2n6S2PlyYc7z6-Hj1rGesIekpnHD_L1FIMURB");'>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-slate-900 dark:text-white text-xl font-bold leading-tight truncate">Rajesh Kumar</h3>
+<p class="text-primary text-sm font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                    Ludhiana District
+                                </p>
+</div>
+<button class="text-primary hover:text-primary-dark p-2 -mr-2">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+</button>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-2">Member since 2021</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Devices Section -->
+<div class="flex flex-col w-full">
+<div class="flex justify-between items-end px-4 pb-2 pt-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">Active Spikes</h2>
+<button class="text-primary text-sm font-semibold flex items-center gap-0.5 hover:underline">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Add Device
+                </button>
+</div>
+<!-- List Item 1: Active -->
+<div class="px-4 py-2">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="flex items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 shrink-0 size-12 text-primary">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-semibold">North Field Spike</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-0.5 rounded-full">
+<span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                Online
+                            </span>
+<span class="text-slate-500 dark:text-slate-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">battery_5_bar</span> 84%
+                            </span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+<!-- List Item 2: Needs Sync -->
+<div class="px-4 py-2">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="flex items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30 shrink-0 size-12 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">wifi_off</span>
+</div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-slate-900 dark:text-white text-base font-semibold">Mango Orchard Spike</p>
+<div class="flex items-center gap-3 mt-1">
+<span class="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded-full">
+<span class="size-1.5 rounded-full bg-orange-500"></span>
+                                Needs Sync
+                            </span>
+<span class="text-slate-500 dark:text-slate-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">battery_2_bar</span> 42%
+                            </span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Calibration Wizard Section -->
+<div class="flex flex-col w-full mt-4">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight px-4 pb-2 pt-2">Two-Point Calibration</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm px-4 pb-4">Calibrate your soil sensors monthly to ensure accurate AI crop diagnosis.</p>
+<div class="grid grid-cols-2 gap-4 px-4">
+<!-- Dry Calibration -->
+<button class="relative flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white dark:bg-surface-dark border-2 border-slate-100 dark:border-slate-700 hover:border-primary/50 dark:hover:border-primary/50 group transition-all active:scale-95 shadow-sm">
+<div class="size-14 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-500 group-hover:bg-amber-100 transition-colors">
+<span class="material-symbols-outlined text-3xl">wb_sunny</span>
+</div>
+<div class="text-center">
+<span class="block text-sm font-bold text-slate-900 dark:text-white">Calibrate Dry</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">(Air)</span>
+</div>
+</button>
+<!-- Wet Calibration -->
+<button class="relative flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white dark:bg-surface-dark border-2 border-slate-100 dark:border-slate-700 hover:border-primary/50 dark:hover:border-primary/50 group transition-all active:scale-95 shadow-sm">
+<div class="size-14 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-500 group-hover:bg-blue-100 transition-colors">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+</div>
+<div class="text-center">
+<span class="block text-sm font-bold text-slate-900 dark:text-white">Calibrate Wet</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">(Water)</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Settings Toggles -->
+<div class="flex flex-col w-full mt-6 mb-8">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight px-4 pb-2">Notifications</h2>
+<div class="bg-surface-light dark:bg-surface-dark mx-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800">
+<!-- SMS Toggle -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-start gap-3">
+<div class="text-slate-400 dark:text-slate-500 mt-0.5">
+<span class="material-symbols-outlined">sms</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-white font-medium text-sm">Enable SMS Alerts</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Receive critical soil health updates</span>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-200 appearance-none cursor-pointer transition-all duration-300 left-0 checked:left-[100%] checked:-translate-x-full checked:border-primary" id="toggle-sms" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 dark:bg-slate-700" for="toggle-sms"></label>
+</div>
+</div>
+<!-- Voice Toggle -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-start gap-3">
+<div class="text-slate-400 dark:text-slate-500 mt-0.5">
+<span class="material-symbols-outlined">record_voice_over</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-white font-medium text-sm">Voice Notifications</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Hear alerts in Hindi &amp; English</span>
+</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-200 appearance-none cursor-pointer transition-all duration-300 left-0 checked:left-[100%] checked:-translate-x-full checked:border-primary" id="toggle-voice" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-200 cursor-pointer transition-colors duration-300 dark:bg-slate-700" for="toggle-voice"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom padding for scroll -->
+<div class="h-8"></div>
+</div>
+</body></html>

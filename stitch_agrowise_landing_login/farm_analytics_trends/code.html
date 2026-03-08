@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Farm Analytics &amp; Trends</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f", // Emerald Green
+                        "earth": "#8B5E3C",   // Earth Brown
+                        "danger": "#DC2626",  // Red
+                        "background-light": "#F8FAFC", // Off-white for outdoor visibility
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles for high visibility elements */
+        .chart-tooltip {
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col pb-24">
+<!-- Header -->
+<div class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 px-4 py-3 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold leading-tight text-slate-900 dark:text-white">Analytics</h1>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Plot A - Wheat</span>
+</div>
+</div>
+<button class="flex items-center gap-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-2 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-200">Last 7 Days</span>
+<span class="material-symbols-outlined text-slate-500 text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex flex-col gap-6 p-4">
+<!-- Chart 1: Soil Moisture -->
+<section class="flex flex-col rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-5 pb-2">
+<div class="flex justify-between items-start mb-1">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Soil Moisture Trend</h2>
+<span class="flex items-center gap-1 rounded-full bg-red-100 dark:bg-red-900/30 px-2 py-1 text-xs font-bold text-red-700 dark:text-red-400">
+<span class="material-symbols-outlined text-[14px]">warning</span> Critical
+                        </span>
+</div>
+<p class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">18% <span class="text-sm font-medium text-slate-500 dark:text-slate-400 align-middle ml-1">Volumetric Water Content</span></p>
+<p class="mt-1 text-sm font-semibold text-danger">Needs Water Immediately</p>
+</div>
+<!-- Chart Visualization -->
+<div class="relative h-[220px] w-full px-2 pt-4">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 350 150">
+<!-- Gradient Definition -->
+<defs>
+<lineargradient id="moistureGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#10b77f" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#10b77f" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#e2e8f0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="350" y1="30" y2="30"></line>
+<line stroke="#e2e8f0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="350" y1="70" y2="70"></line>
+<line stroke="#e2e8f0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="350" y1="110" y2="110"></line>
+<!-- Wilting Point Threshold (Red Dashed) -->
+<line stroke="#DC2626" stroke-dasharray="6 4" stroke-width="2" x1="0" x2="350" y1="120" y2="120"></line>
+<text class="text-[10px] font-bold fill-red-600 dark:fill-red-400 uppercase tracking-wider" x="5" y="116">Wilting Point</text>
+<!-- Data Area -->
+<path d="M0 40 C 60 45, 120 60, 180 85 C 240 110, 300 125, 350 135 L 350 150 L 0 150 Z" fill="url(#moistureGradient)"></path>
+<path d="M0 40 C 60 45, 120 60, 180 85 C 240 110, 300 125, 350 135" fill="none" stroke="#10b77f" stroke-linecap="round" stroke-width="4"></path>
+<!-- Interactive Dots -->
+<circle cx="60" cy="45" fill="#10b77f" r="5" stroke="white" stroke-width="2"></circle>
+<circle cx="120" cy="60" fill="#10b77f" r="5" stroke="white" stroke-width="2"></circle>
+<circle cx="180" cy="85" fill="#10b77f" r="5" stroke="white" stroke-width="2"></circle>
+<circle cx="240" cy="110" fill="#10b77f" r="5" stroke="white" stroke-width="2"></circle>
+<!-- Selected Dot -->
+<circle class="drop-shadow-md" cx="300" cy="125" fill="#DC2626" r="7" stroke="white" stroke-width="3"></circle>
+</svg>
+<!-- Tooltip overlay for the selected point -->
+<div class="absolute top-[55%] left-[75%] bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded pointer-events-none transform -translate-x-1/2 -translate-y-full mb-2">
+                        19%
+                        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-slate-800"></div>
+</div>
+</div>
+<!-- X Axis Labels -->
+<div class="flex justify-between px-6 pb-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+<span class="text-xs font-bold text-slate-500">Mon</span>
+<span class="text-xs font-bold text-slate-500">Tue</span>
+<span class="text-xs font-bold text-slate-500">Wed</span>
+<span class="text-xs font-bold text-slate-500">Thu</span>
+<span class="text-xs font-bold text-slate-500">Fri</span>
+<span class="text-xs font-bold text-slate-500">Sat</span>
+<span class="text-xs font-bold text-slate-900 dark:text-white">Sun</span>
+</div>
+<!-- AI Insight -->
+<div class="mx-5 mb-5 mt-2 rounded-lg bg-primary/10 p-3 border-l-4 border-primary">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">smart_toy</span>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">
+<span class="font-bold text-primary">Insight:</span> Moisture dropping rapidly. Irrigation recommended tomorrow morning to avoid wilting point.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Chart 2: Temp vs Humidity -->
+<section class="flex flex-col rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-5 pb-2">
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Temp vs. Humidity</h2>
+</div>
+<div class="flex items-center gap-4 mb-2">
+<div class="flex items-center gap-2">
+<div class="h-1 w-6 rounded-full bg-earth"></div>
+<span class="text-sm font-bold text-slate-600 dark:text-slate-300">Temp (°C)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="h-1 w-6 rounded-full bg-primary"></div>
+<span class="text-sm font-bold text-slate-600 dark:text-slate-300">Humidity (%)</span>
+</div>
+</div>
+</div>
+<!-- Chart Visualization -->
+<div class="relative h-[200px] w-full px-2 pt-2">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 350 150">
+<!-- Y-Axis Grid -->
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="350" y1="20" y2="20"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="350" y1="60" y2="60"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="350" y1="100" y2="100"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="350" y1="140" y2="140"></line>
+<!-- Temp Line (Brown) -->
+<path d="M0 90 Q 50 40, 100 50 T 200 60 T 350 40" fill="none" stroke="#8B5E3C" stroke-linecap="round" stroke-width="3"></path>
+<!-- Humidity Line (Green) -->
+<path d="M0 60 Q 50 110, 100 100 T 200 90 T 350 110" fill="none" stroke="#10b77f" stroke-linecap="round" stroke-width="3"></path>
+<!-- Interactive Dots for Temp -->
+<circle cx="100" cy="50" fill="#8B5E3C" r="4" stroke="white" stroke-width="2"></circle>
+<circle cx="200" cy="60" fill="#8B5E3C" r="4" stroke="white" stroke-width="2"></circle>
+<!-- Interactive Dots for Humidity -->
+<circle cx="100" cy="100" fill="#10b77f" r="4" stroke="white" stroke-width="2"></circle>
+<circle cx="200" cy="90" fill="#10b77f" r="4" stroke="white" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- X Axis Labels (Time of day) -->
+<div class="flex justify-between px-4 pb-4 pt-2 border-t border-slate-100 dark:border-slate-800">
+<span class="text-xs font-bold text-slate-500">6am</span>
+<span class="text-xs font-bold text-slate-500">9am</span>
+<span class="text-xs font-bold text-slate-500">12pm</span>
+<span class="text-xs font-bold text-slate-500">3pm</span>
+<span class="text-xs font-bold text-slate-500">6pm</span>
+<span class="text-xs font-bold text-slate-500">9pm</span>
+</div>
+<!-- AI Insight -->
+<div class="mx-5 mb-5 mt-2 rounded-lg bg-orange-50 dark:bg-orange-900/20 p-3 border-l-4 border-earth">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-earth text-sm mt-0.5">lightbulb</span>
+<p class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">
+<span class="font-bold text-earth">Insight:</span> High humidity observed in early mornings. Monitor for fungal growth.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Connection Status (Offline Ready) -->
+<div class="flex items-center justify-center gap-2 py-2 opacity-60">
+<span class="material-symbols-outlined text-sm text-slate-500">cloud_done</span>
+<p class="text-xs font-medium text-slate-500">Data updated: Today, 10:30 AM</p>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 px-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-30 h-[88px]">
+<div class="flex justify-between items-center h-full pb-4">
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300 transition-colors">dashboard</span>
+<span class="text-[11px] font-bold text-slate-500 group-hover:text-slate-700 dark:text-slate-500">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<div class="bg-primary/10 dark:bg-primary/20 rounded-full px-4 py-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary fill-1">analytics</span>
+</div>
+<span class="text-[11px] font-bold text-primary">Trends</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group relative" href="#">
+<div class="absolute -top-8 bg-primary rounded-full p-3 shadow-lg border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-white">center_focus_weak</span>
+</div>
+<div class="h-6"></div> <!-- Spacer for FAB -->
+<span class="text-[11px] font-bold text-slate-500 mt-1">Scan</span>
+</a>
+<a class="flex flex-col items-center gap-1 min-w-[64px] group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300 transition-colors">person</span>
+<span class="text-[11px] font-bold text-slate-500 group-hover:text-slate-700 dark:text-slate-500">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

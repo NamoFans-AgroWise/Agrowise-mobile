@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgroWise - Login</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "primary-dark": "#0e9f6e", 
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#18332c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'up': '0 -4px 20px -5px rgba(0, 0, 0, 0.1)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Header / Hero Illustration Area -->
+<!-- Taking up roughly 45-50% of the screen height -->
+<div class="relative h-[48vh] w-full shrink-0">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" data-alt="Happy Indian farmer standing in a lush green field next to a smart soil monitoring device" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbsbYlAyo79gxIu6u9Jvm1874rq_OemA_yu59gLkbXAp0wEckBlm4CgyISkxOqgi1OQtiqZBWi_fZ_2rpw_Xdmtgf_gJ-anusCYEhtyScoGEXAeFYi2pQ5AHuk6_fYGpTUDY6YJf-ueFzUmbk154V9No9BnW5XDbYfbsKHqXsbVhytEF73JQLbBav5bo5h-FhF8qbq6Hq-izPCzzuWREwANGGi4HOrsAugkW4_hVn2p54XKJS38zoKDlx0533nSpldwXQfkgZmQgSh');">
+</div>
+<!-- Dark Gradient Overlay for text contrast at the top -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent"></div>
+<!-- Logo Area -->
+<div class="absolute top-0 left-0 w-full p-6 flex justify-between items-start z-10">
+<div class="flex items-center gap-2">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-sm">
+<span class="material-symbols-outlined text-white text-2xl">eco</span>
+</div>
+<span class="text-2xl font-bold text-white tracking-wide drop-shadow-md">AgroWise</span>
+</div>
+</div>
+</div>
+<!-- Login Card Sheet -->
+<!-- Negative margin pulls it up over the image -->
+<div class="relative z-20 -mt-10 flex flex-1 flex-col rounded-t-3xl bg-surface-light dark:bg-surface-dark px-6 pt-8 pb-6 shadow-up ring-1 ring-black/5">
+<!-- Decorative Handle for the sheet look -->
+<div class="mx-auto mb-6 h-1.5 w-12 rounded-full bg-slate-200 dark:bg-slate-600"></div>
+<!-- Header Row: Title & Language Toggle -->
+<div class="mb-8 flex flex-col gap-4">
+<!-- Language Selector (Right Aligned or Full Width based on preference, here Top Right context) -->
+<div class="flex justify-end">
+<div class="inline-flex rounded-lg bg-slate-100 dark:bg-black/20 p-1">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="lang" type="radio" value="en"/>
+<span class="block rounded-md px-3 py-1.5 text-xs font-semibold text-slate-500 transition-all peer-checked:bg-white peer-checked:text-primary peer-checked:shadow-sm dark:text-slate-400 dark:peer-checked:bg-background-dark dark:peer-checked:text-primary">Eng</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="lang" type="radio" value="hi"/>
+<span class="block rounded-md px-3 py-1.5 text-xs font-semibold text-slate-500 transition-all peer-checked:bg-white peer-checked:text-primary peer-checked:shadow-sm dark:text-slate-400 dark:peer-checked:bg-background-dark dark:peer-checked:text-primary">हिंदी</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="lang" type="radio" value="bn"/>
+<span class="block rounded-md px-3 py-1.5 text-xs font-semibold text-slate-500 transition-all peer-checked:bg-white peer-checked:text-primary peer-checked:shadow-sm dark:text-slate-400 dark:peer-checked:bg-background-dark dark:peer-checked:text-primary">বাংলা</span>
+</label>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white leading-tight">Welcome Farmer</h2>
+<p class="mt-1 text-slate-500 dark:text-slate-400 font-medium">Log in to check soil health</p>
+</div>
+</div>
+<!-- Login Form -->
+<div class="flex flex-col gap-6">
+<!-- Mobile Number Input -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Mobile Number</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<span class="text-lg font-bold text-slate-500 dark:text-slate-400 border-r border-slate-300 dark:border-slate-600 pr-3">+91</span>
+</div>
+<input class="block w-full rounded-xl border-slate-200 bg-slate-50 p-4 pl-20 text-lg font-medium text-slate-900 placeholder:text-slate-400 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-black/20 dark:text-white dark:focus:border-primary transition-all h-16" placeholder="Enter mobile number" type="tel"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-primary">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary h-14 px-5 text-lg font-bold text-white shadow-lg shadow-primary/25 hover:bg-primary-dark active:scale-[0.98] transition-all">
+<span>Send OTP</span>
+<span class="material-symbols-outlined ml-2 text-xl">arrow_forward</span>
+</button>
+<!-- Terms Text -->
+<p class="text-center text-xs text-slate-400 dark:text-slate-500 px-4">
+                    By clicking Send OTP, you agree to our <a class="underline decoration-slate-300 underline-offset-2" href="#">Terms of Service</a> and <a class="underline decoration-slate-300 underline-offset-2" href="#">Privacy Policy</a>.
+                </p>
+</div>
+<!-- Spacer to push content up if needed on taller screens, or just padding -->
+<div class="flex-1"></div>
+</div>
+<!-- Floating Action Button (FAB) - Voice Help -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-full px-6 flex justify-center pointer-events-none">
+<button class="pointer-events-auto group flex items-center gap-3 rounded-full bg-slate-800 dark:bg-white px-6 py-3.5 text-white dark:text-slate-900 shadow-xl hover:bg-slate-700 dark:hover:bg-slate-100 transition-all active:scale-95 ring-4 ring-white/50 dark:ring-black/20">
+<div class="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/20 dark:bg-slate-200">
+<span class="material-symbols-outlined text-[20px] animate-pulse">call</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-[10px] opacity-80 uppercase tracking-wider font-semibold leading-none mb-0.5">Need Help?</span>
+<span class="text-sm font-bold leading-none">Call Support</span>
+</div>
+</button>
+</div>
+</div>
+</body></html>

@@ -100,6 +100,7 @@ export interface AnalyticsData {
 
 // Navigation types
 export type RootStackParamList = {
+  Login: undefined;
   Main: undefined;
   DevicePairing: undefined;
   FieldSetup: { deviceId?: string };
@@ -111,6 +112,7 @@ export type RootStackParamList = {
 
 export type MainTabParamList = {
   HomeTab: undefined;
+  TrendsTab: undefined;
   DiagnosisTab: undefined;
   CommunityTab: undefined;
   ProfileTab: undefined;

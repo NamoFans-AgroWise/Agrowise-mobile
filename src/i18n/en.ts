@@ -10,6 +10,7 @@ export default {
     done: 'Done',
     listen: 'Listen',
     search: 'Search',
+    welcome: 'Welcome',
   },
   greeting: {
     hello: 'Hello',

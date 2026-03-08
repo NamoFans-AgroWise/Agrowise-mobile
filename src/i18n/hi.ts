@@ -10,6 +10,7 @@ export default {
     done: 'पूर्ण',
     listen: 'सुनें',
     search: 'खोजें',
+    welcome: 'स्वागत है',
   },
   greeting: {
     hello: 'नमस्ते',
