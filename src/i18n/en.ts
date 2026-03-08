@@ -103,4 +103,8 @@ export default {
     soilMoistureTrend: 'Soil Moisture Trend',
     temperatureTrend: 'Temperature Trend',
   },
+  login: {
+    welcomeFarmer: 'Welcome Farmer',
+    subtitle: 'Log in to check soil health',
+  },
 };

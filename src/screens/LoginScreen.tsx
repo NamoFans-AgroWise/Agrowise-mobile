@@ -10,24 +10,38 @@ import {
   Platform,
   ScrollView,
   StatusBar,
+  Alert,
 } from 'react-native';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch } from '../hooks';
+import { setLanguage } from '../features/settingsSlice';
+
+const comingSoon = (feature: string) =>
+  Alert.alert('Coming Soon', `${feature} will be available in a future update.`);
 
 export const LoginScreen: React.FC = () => {
   const navigation = useNavigation<any>();
   const { t, i18n } = useTranslation();
+  const dispatch = useAppDispatch();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [selectedLang, setSelectedLang] = useState(i18n.language || 'en');
 
   const handleLanguageChange = (lang: string) => {
     setSelectedLang(lang);
     i18n.changeLanguage(lang);
+    if (lang === 'en' || lang === 'hi') {
+      dispatch(setLanguage(lang as 'en' | 'hi'));
+    }
   };
 
   const handleSendOTP = () => {
-    // Mock login for now
+    const digits = phoneNumber.replace(/\D/g, '');
+    if (digits.length !== 10) {
+      Alert.alert('Invalid Number', 'Please enter a valid 10-digit mobile number.');
+      return;
+    }
     navigation.navigate('Main');
   };
 
@@ -50,7 +64,7 @@ export const LoginScreen: React.FC = () => {
           >
             {/* Dark Gradient Overlay */}
             <View className="absolute inset-0 bg-black/40" />
-            
+
             {/* Logo Area */}
             <SafeAreaView className="p-6 flex-row items-center justify-between z-10">
               <View className="flex-row items-center gap-2">
@@ -66,7 +80,7 @@ export const LoginScreen: React.FC = () => {
         </View>
 
         {/* Login Card Sheet */}
-        <View className="relative z-20 -mt-10 flex-1 rounded-t-3xl bg-surface-light dark:bg-surface-dark px-6 pt-8 pb-6 shadow-lg">
+        <View className="relative z-20 -mt-10 flex-1 rounded-t-3xl bg-surface-light dark:bg-surface-dark px-6 pt-8 pb-6 shadow-lg ring-1 ring-black/5">
           {/* Decorative Handle */}
           <View className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-slate-200 dark:bg-slate-600" />
 
@@ -99,10 +113,10 @@ export const LoginScreen: React.FC = () => {
             </View>
             <View>
               <Text className="text-3xl font-bold text-slate-900 dark:text-white leading-tight">
-                Welcome Farmer
+                {t('login.welcomeFarmer')}
               </Text>
               <Text className="mt-1 text-slate-500 dark:text-slate-400 font-medium">
-                Log in to check soil health
+                {t('login.subtitle')}
               </Text>
             </View>
           </View>
@@ -137,7 +151,7 @@ export const LoginScreen: React.FC = () => {
               className="flex-row w-full items-center justify-center rounded-xl bg-primary h-14 px-5 shadow-lg shadow-primary/25 active:scale-95"
             >
               <Text className="text-lg font-bold text-white">Send OTP</Text>
-              <MaterialCommunityIcons name="arrow-right" size={24} color="white" className="ml-2" />
+              <MaterialCommunityIcons name="arrow-right" size={24} color="white" style={{ marginLeft: 8 }} />
             </TouchableOpacity>
 
             {/* Terms Text */}
@@ -154,7 +168,10 @@ export const LoginScreen: React.FC = () => {
 
       {/* Floating Action Button */}
       <View className="absolute bottom-6 left-0 right-0 items-center pointer-events-none">
-        <TouchableOpacity className="pointer-events-auto flex-row items-center gap-3 rounded-full bg-slate-800 dark:bg-white px-6 py-3.5 shadow-xl active:scale-95">
+        <TouchableOpacity
+          onPress={() => comingSoon('Call Support')}
+          className="pointer-events-auto flex-row items-center gap-3 rounded-full bg-slate-800 dark:bg-white px-6 py-3.5 shadow-xl active:scale-95 ring-4 ring-white/50 dark:ring-black/20"
+        >
           <View className="h-8 w-8 items-center justify-center rounded-full bg-white/20 dark:bg-slate-200">
             <MaterialCommunityIcons name="phone" size={20} color={Platform.OS === 'ios' ? 'white' : '#0f172a'} />
           </View>

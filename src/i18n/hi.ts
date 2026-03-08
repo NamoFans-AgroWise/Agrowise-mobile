@@ -103,4 +103,8 @@ export default {
     soilMoistureTrend: 'मिट्टी नमी प्रवृत्ति',
     temperatureTrend: 'तापमान प्रवृत्ति',
   },
+  login: {
+    welcomeFarmer: 'स्वागत है किसान',
+    subtitle: 'मिट्टी की सेहत जांचने के लिए लॉगिन करें',
+  },
 };

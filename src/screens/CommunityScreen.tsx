@@ -7,10 +7,14 @@ import {
   SafeAreaView,
   StatusBar,
   Image,
-  TextInput,
+  Alert,
 } from 'react-native';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../hooks';
+
+const comingSoon = (feature: string) =>
+  Alert.alert('Coming Soon', `${feature} will be available in a future update.`);
 
 interface Post {
   id: string;
@@ -63,14 +67,35 @@ const mockPosts: Post[] = [
 
 const categories = ['All', 'Questions', 'Tips', 'Success Stories', 'Market'];
 
+const categoryTagMap: Record<string, string[]> = {
+  All: [],
+  Questions: ['Question'],
+  Tips: ['Tips'],
+  'Success Stories': ['Success'],
+  Market: ['Market'],
+};
+
 export const CommunityScreen: React.FC = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useAppSelector(state => state.settings);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [posts, setPosts] = useState<Post[]>(mockPosts);
+
+  const filteredPosts = activeCategory === 'All'
+    ? posts
+    : posts.filter(p => p.tags.some(tag => categoryTagMap[activeCategory]?.includes(tag)));
+
+  const handleLike = (id: string) => setPosts(prev =>
+    prev.map(p => p.id === id
+      ? { ...p, isLiked: !p.isLiked, likes: p.isLiked ? p.likes - 1 : p.likes + 1 }
+      : p
+    )
+  );
 
   return (
     <SafeAreaView className="flex-1 bg-white dark:bg-background-dark">
-      <StatusBar barStyle="dark-content" />
-      
+      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
+
       {/* Header */}
       <View className="px-4 py-3 flex-row items-center justify-between border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark">
         <View>
@@ -78,10 +103,16 @@ export const CommunityScreen: React.FC = () => {
           <Text className="text-xs font-semibold text-primary">Agro-Knowledge Hub</Text>
         </View>
         <View className="flex-row items-center gap-2">
-          <TouchableOpacity className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 items-center justify-center">
+          <TouchableOpacity
+            onPress={() => comingSoon('Search')}
+            className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 items-center justify-center"
+          >
             <Ionicons name="search" size={20} color="#10b77f" />
           </TouchableOpacity>
-          <TouchableOpacity className="w-10 h-10 rounded-full bg-primary items-center justify-center">
+          <TouchableOpacity
+            onPress={() => comingSoon('Post creation')}
+            className="w-10 h-10 rounded-full bg-primary items-center justify-center"
+          >
             <Ionicons name="add" size={24} color="white" />
           </TouchableOpacity>
         </View>
@@ -100,8 +131,8 @@ export const CommunityScreen: React.FC = () => {
                 key={category}
                 onPress={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 rounded-2xl mr-3 border ${
-                  activeCategory === category 
-                    ? 'bg-primary border-primary' 
+                  activeCategory === category
+                    ? 'bg-primary border-primary'
                     : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700'
                 } shadow-sm`}
               >
@@ -117,10 +148,10 @@ export const CommunityScreen: React.FC = () => {
 
         {/* Posts Feed */}
         <View className="px-4 pb-20">
-          {mockPosts.map((post) => (
-            <View 
-              key={post.id} 
-              className="mb-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden"
+          {filteredPosts.map((post) => (
+            <View
+              key={post.id}
+              className="mb-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden"
             >
               <View className="p-4">
                 {/* Post Header */}
@@ -132,7 +163,10 @@ export const CommunityScreen: React.FC = () => {
                       <Text className="text-[10px] font-medium text-slate-400">{post.time}</Text>
                     </View>
                   </View>
-                  <TouchableOpacity className="w-8 h-8 items-center justify-center">
+                  <TouchableOpacity
+                    onPress={() => comingSoon('Post options')}
+                    className="w-8 h-8 items-center justify-center"
+                  >
                     <MaterialCommunityIcons name="dots-horizontal" size={20} color="#94a3b8" />
                   </TouchableOpacity>
                 </View>
@@ -161,22 +195,28 @@ export const CommunityScreen: React.FC = () => {
                 {/* Actions */}
                 <View className="flex-row items-center justify-between pt-3 border-t border-slate-50 dark:border-slate-800">
                   <View className="flex-row items-center gap-6">
-                    <TouchableOpacity className="flex-row items-center gap-1.5">
-                      <Ionicons 
-                        name={post.isLiked ? "heart" : "heart-outline"} 
-                        size={22} 
-                        color={post.isLiked ? "#ef4444" : "#64748b"} 
+                    <TouchableOpacity
+                      onPress={() => handleLike(post.id)}
+                      className="flex-row items-center gap-1.5"
+                    >
+                      <Ionicons
+                        name={post.isLiked ? "heart" : "heart-outline"}
+                        size={22}
+                        color={post.isLiked ? "#ef4444" : "#64748b"}
                       />
                       <Text className={`text-xs font-bold ${post.isLiked ? 'text-red-500' : 'text-slate-500'}`}>
                         {post.likes}
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="flex-row items-center gap-1.5">
+                    <TouchableOpacity
+                      onPress={() => comingSoon('Comments')}
+                      className="flex-row items-center gap-1.5"
+                    >
                       <Ionicons name="chatbubble-outline" size={20} color="#64748b" />
                       <Text className="text-xs font-bold text-slate-500">{post.comments}</Text>
                     </TouchableOpacity>
                   </View>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => comingSoon('Share')}>
                     <Ionicons name="share-social-outline" size={20} color="#64748b" />
                   </TouchableOpacity>
                 </View>
@@ -188,4 +228,3 @@ export const CommunityScreen: React.FC = () => {
     </SafeAreaView>
   );
 };
-

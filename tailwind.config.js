@@ -16,11 +16,11 @@ module.exports = {
         },
         surface: {
           light: '#ffffff',
-          dark: '#1e293b',
+          dark: '#162219',
         },
         background: {
           light: '#f6f8f7',
-          dark: '#0f172a',
+          dark: '#0d1512',
         },
         action: {
           DEFAULT: '#f59e0b',
@@ -33,6 +33,7 @@ module.exports = {
           light: '#ef4444',
         },
         secondary: '#8B5E3C',
+        earth: '#8B5E3C',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
